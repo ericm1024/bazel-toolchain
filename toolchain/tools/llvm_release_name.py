@@ -22,6 +22,9 @@ _known_distros = ["freebsd", "suse", "ubuntu", "arch", "manjaro", "debian", "fed
 def _major_llvm_version(llvm_version):
     return int(llvm_version.split(".")[0])
 
+def _minor_llvm_version(llvm_version):
+    return int(llvm_version.split(".")[1])
+
 def _darwin(llvm_version):
     major_llvm_version = _major_llvm_version(llvm_version)
     suffix = "darwin-apple" if major_llvm_version == 9 else "apple-darwin"
@@ -66,6 +69,7 @@ def _linux(llvm_version):
         version = info["VERSION_ID"].strip('"')
 
     major_llvm_version = _major_llvm_version(llvm_version)
+    minor_llvm_version = _minor_llvm_version(llvm_version)
 
     # NOTE: Many of these systems are untested because I do not have access to them.
     # If you find this mapping wrong, please send a Pull Request on Github.
@@ -83,8 +87,11 @@ def _linux(llvm_version):
             # 20.04
             os_name = "linux-gnu-ubuntu-18.04"
         else:
-            # release 11.0.0 started providing packaging for ubuntu 20
-            os_name = "linux-gnu-ubuntu-20.04"
+            if minor_llvm_version == 0:
+                # release 11.0.0 started providing packaging for ubuntu 20
+                os_name = "linux-gnu-ubuntu-20.04"
+            else:
+                os_name = "linux-gnu-ubuntu-20.10"
             
     elif (distname == "ubuntu" and version.startswith("18.04")) or (distname == "linuxmint" and version.startswith("19")):
         os_name = "linux-gnu-ubuntu-18.04"
