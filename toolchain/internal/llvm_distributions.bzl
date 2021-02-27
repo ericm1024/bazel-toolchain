@@ -121,6 +121,9 @@ _llvm_distributions = {
     "clang+llvm-11.1.0-aarch64-linux-gnu.tar.xz": "18df38247af3fba0e0e2991fb00d7e3cf3560b4d3509233a14af699ef0039e1c",
     "clang+llvm-11.1.0-i386-unknown-freebsd12.tar.xz": "3c23d3b97f869382b33878d8a5210056c60d5e749acfeea0354682bb013f5a20",
     "clang+llvm-11.1.0-powerpc64le-linux-rhel-7.4.tar.xz": "8ff13bb70f1eb8efe61b1899e4d05d6f15c18a14a9ffa883f54f243b060fa778",
+
+    # 12.0.0-rc2
+    "clang+llvm-12.0.0-rc2-x86_64-linux-gnu-ubuntu-20.10.tar.xz": "70d15e6284e43472c04d28c6fe9db39f6f46aceafd0e9f6fe2f73f4e2d235fdc",
 }
 
 # Note: Unlike the user-specified llvm_mirror attribute, the URL prefixes in
@@ -135,7 +138,8 @@ _llvm_distributions_base_url = {
     "9.0.0": "https://releases.llvm.org/",
     "10.0.0": "https://github.com/llvm/llvm-project/releases/download/llvmorg-",
     "11.0.0": "https://github.com/llvm/llvm-project/releases/download/llvmorg-",
-    "11.1.0": "https://github.com/llvm/llvm-project/releases/download/llvmorg-",    
+    "11.1.0": "https://github.com/llvm/llvm-project/releases/download/llvmorg-",
+    "12.0.0-rc2": "https://github.com/llvm/llvm-project/releases/download/llvmorg-",    
 }
 
 def _python(rctx):
